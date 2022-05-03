@@ -9,12 +9,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class EjemploController extends AbstractController
 {
     /**
-     * @Route("/ejemplo", name="app_ejemplo")
+     * @Route("/inicio", name="inicio")
      */
     public function index(): Response
     {
-        return $this->render('ejemplo/index.html.twig', [
-            'controller_name' => 'EjemploController',
-        ]);
+        return $this->render('ejemplo/index.html.twig');
+    }
+        /**
+     * @Route("/principal", name="principal")
+     */
+    public function principal(): Response
+    {
+        return $this->render('principal.html.twig');
     }
 }
