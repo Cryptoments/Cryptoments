@@ -42,46 +42,5 @@ class Clientes
      */
     private $email;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getNombre(): ?string
-    {
-        return $this->nombre;
-    }
-
-    public function setNombre(string $nombre): self
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    public function getPass(): ?string
-    {
-        return $this->pass;
-    }
-
-    public function setPass(string $pass): self
-    {
-        $this->pass = $pass;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
 
 }
