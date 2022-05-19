@@ -29,4 +29,33 @@ class EjemploController extends AbstractController
             'prueba' => $prueba,
         ]);
     }
+
+    //NOS LLEVA A LA PLANTILLA DE LOGIN
+
+	/**
+	 * @Route("/login", name="acceso_login")
+	 */
+	public function login()
+	{
+		return $this->render('logIn.html.twig');
+	}
+
+    /**
+	 * @Route("/login2", name="acceso_login")
+	 */
+	public function login2()
+	{
+		return $this->render('logIn2.html.twig');
+	}
+
+    //NOS LLEVA A LA PLANTILLA DE SIGN UP
+
+	/**
+	 * @Route("/signUp", name="acceso_signUp")
+	 */
+	public function signUp()
+	{
+		return $this->render('signUp.html.twig');
+	}
+
 }
