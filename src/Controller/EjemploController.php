@@ -22,4 +22,12 @@ class EjemploController extends AbstractController
     {
         return $this->render('principal.html.twig');
     }
+    /**
+     * @Route("/coleccion/{nombre}", name="coleccion")
+     */
+    public function coleccion($nombre): Response
+    {
+        return $this->render('coleccion.html.twig',array(
+            'nombre' => $nombre));
+    }
 }
