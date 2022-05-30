@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Clientes;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class EjemploController extends AbstractController
 {
@@ -29,6 +31,29 @@ class EjemploController extends AbstractController
             'prueba' => $prueba,
         ]);
     }
+
+
+    /**
+     * @Route("/crearUsuario", name="crearUsuario")
+     */
+    public function crearUsuario(UserPasswordEncoderInterface $encoder, UserInterface $cosa): Response
+    {
+        
+        /* insertar en bd */
+        $cli = new Clientes();
+        $cli->setNombre($_POST['nombre_usu']);
+        $clave = $_POST['clave_usu'];
+		$encoded = $encoder->encodePassword($cosa, $clave);
+		$cli->setPass($encoded);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($cli);
+        $em->flush(); 
+        $em = $this->getDoctrine()->getManager();
+        //$prueba = $this->getDoctrine()->getRepository(Clientes::class)->findOneBy(array('id' => 2));
+        /* $single_user = $em->getRepository()->find('Clientes', 1); */
+        return $this->render('login2.html.twig');
+    }
+    
 
     //NOS LLEVA A LA PLANTILLA DE LOGIN
 
@@ -55,7 +80,11 @@ class EjemploController extends AbstractController
 	 */
 	public function signUp()
 	{
-		return $this->render('signUp.html.twig');
+		return $this->render('signUp2.html.twig');
 	}
+
+    
+
+    
 
 }
