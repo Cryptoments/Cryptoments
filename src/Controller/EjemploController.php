@@ -66,8 +66,13 @@ class EjemploController extends AbstractController
 	{
         $em = $this->getDoctrine()->getManager();
         $prueba = $this->getDoctrine()->getRepository(Clientes::class)->findOneBy(array('nombre' => "ruben"));
-        var_dump($prueba);
-		return $this->render('logIn.html.twig');
+        if($prueba->getPass()==$_POST["_password"]){
+            return $this->render('colecciones.html.twig');
+        }
+        else{
+            return $this->render('login2.html.twig');
+        }
+		
 	}
 
     /**
