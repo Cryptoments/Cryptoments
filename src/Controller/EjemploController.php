@@ -15,13 +15,14 @@ class EjemploController extends AbstractController
     {
         return $this->render('ejemplo/index.html.twig');
     }
-        /**
-     * @Route("/principal", name="principal")
+    /**
+     * @Route("/colecciones", name="colecciones")
      */
-    public function principal(): Response
+    public function colecciones(): Response
     {
-        return $this->render('principal.html.twig');
+        return $this->render('colecciones.html.twig');
     }
+
     /**
      * @Route("/coleccion/{nombre}", name="coleccion")
      */
