@@ -16,7 +16,6 @@ class EjemploController extends AbstractController
      */
     public function index(): Response
     {
-        echo "asdas";
         /* insertar en bd */
         /*  $cli = new Clientes();
         $cli->setNombre('PruebaInsert');
@@ -27,9 +26,7 @@ class EjemploController extends AbstractController
         $em->flush(); */
         
         /* $single_user = $em->getRepository()->find('Clientes', 1); */
-        return $this->render('ejemplo/index.html.twig', [
-            'prueba' => $prueba,
-        ]);
+        return $this->render('ejemplo/index.html.twig');
     }
 
 
@@ -65,7 +62,9 @@ class EjemploController extends AbstractController
 	public function logear()
 	{
         $em = $this->getDoctrine()->getManager();
-        $prueba = $this->getDoctrine()->getRepository(Clientes::class)->findOneBy(array('nombre' => "ruben"));
+        $prueba = $em->getRepository(Clientes::class)->findOneBy(array('nombre' => $_POST["_username"]));
+        /* var_dump( $em->getRepository(Clientes::class)->findOneBy(array('nombre' => $_POST["_username"])));
+        exit(); */
         if($prueba->getPass()==$_POST["_password"]){
             return $this->render('colecciones.html.twig');
         }
@@ -76,7 +75,7 @@ class EjemploController extends AbstractController
 	}
 
     /**
-	 * @Route("/login2", name="acceso_login")
+	 * @Route("/login2", name="login2")
 	 */
 	public function login2()
 	{
@@ -86,7 +85,7 @@ class EjemploController extends AbstractController
     //NOS LLEVA A LA PLANTILLA DE SIGN UP
 
 	/**
-	 * @Route("/signUp", name="acceso_signUp")
+	 * @Route("/signUp", name="signUp")
 	 */
 	public function signUp()
 	{

@@ -20,43 +20,29 @@
 			}
 		</style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<div class="navbar navbar-dark bg-dark">
+			<div class="container">
+				<h1 class="navbar-brand">CRYPTOMENTS NFT</h1>
+				<div>
+					<a href="{{path("colecciones")}}"><button type="button" class="btn btn-success" >Colecciones</button></a>
+					<a href="{{path("login2")}}"><button class="btn btn-danger" type="button">Login</button></a>
+					<a href="{{path("signUp")}}"><button class="btn btn-info"  type="button">Registro</button></a>
+				</div>				
+			</div>
+		</div>
     </head>
     <body>
         {% if nombre=="cryparisByN" %}
+		<div class="container">
 			<section class="jumbotron text-center  bg-light">
 				<div class="panel-heading tit1" id="tit1">
 					<p id="">
 						Colección
 						<b>Cryparis</b>
 						by Cryptoments &copy;</p>
-
-					<div id="cryparisContainer" class="container" style="position: relative;">
-						{# Div que se muestra al pasar el ratón por encima de alguna colección #}
-						<a style="text-decoration:none" href="/coleccion/cryparisByN"><div id="info" class="container bg-secondary" style="opacity:0;height:374px; position: absolute;z-index:3;">
-							<div class="row mt-3 mb-3">
-								<p class="text-center text-dark" style="font-family:calibri;">Cryparis</p>
-							</div>
-							<div class="row text-dark mt-3">
-								<p style="font-family:calibri; font-size:20px; text-shadow:none;">Colección basada en monumentos de París. Esta colección cuenta con 3 modelos de NFTs diferentes. Son los únicos NFTs de Cryptoments lanzados en Blanco y Negro, para así otorgarles una mayor sensación de antigüedad.
-									<br>
-									"BitEiffel" NFT basado en la Torre Eiffel sólo habrá disponibles un total de 5 unidades.
-									<br>
-									"Arco del Bitcoin" NFT basado en el Arco del Triunfo, sólo habrá disponibles un total de 5 unidades
-									<br>
-									"Catedral Cryptoments" NFT basado en la catedral de Notre Dame, sólo habrá disponibles un total de 5 unidades. "</p>
-								<p style="font-family:calibri;" class="mt-3">
-									16 de Junio de 2022</p>
-							<section style="font-size:20px;">
-								<p style="border:1px solid; display:inline-block;background-color:white;">
-									<span id="days"></span> días / <span id="hours"></span> horas / <span id="minutes"></span> minutos / <span id="seconds"></span> segundos
-								</p>
-							</section> 
-						</div>
-						</a> 
-					</div>
-						<div class="row mt-2" id="cryparis">
-
-							<div class="col-md-4">
+						<div class="row mt-2" >
+							<div id="info1" style="height:60%; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">Prueba1</div>
+							<div class="col-md-4" id="cryparis1">
 								<div class="card mb-4 box-shadow">
 									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftBiteiffel.jpg', 'nftBiteiffel')}}" alt="NFT #02">
 									<div
@@ -72,7 +58,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4" id="cryparis2">
 								<div class="card mb-4 box-shadow">
 									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftArcoDelBitcoinByN.jpg', 'nftBiteiffel')}}" alt="NFT #02">
 									<div
@@ -88,7 +74,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 ">
+							<div class="col-md-4 " id="cryparis3">
 								<div class="card mb-4 box-shadow">
 									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('catedralCryptoments.jpg', 'nftBiteiffel')}}" alt="NFT #03">
 									<div
@@ -108,41 +94,18 @@
 					</div>
 				</div>
 			</section>
+		</div>
 		{% elseif nombre=="crymadrid" %}
+		<div class="container">
 			<section class="jumbotron text-center  bg-light">
 				<div class="panel-heading tit1" id="tit1">
 					<p id="">
 						Colección
-						<b>Cryparis</b>
+						<b>crymadrid</b>
 						by Cryptoments &copy;</p>
-
-					<div id="cryparisContainer" class="container" style="position: relative;">
-						{# Div que se muestra al pasar el ratón por encima de alguna colección #}
-						<a style="text-decoration:none" href="/coleccion/cryparisByN"><div id="info" class="container bg-secondary" style="opacity:0;height:374px; position: absolute;z-index:3;">
-							<div class="row mt-3 mb-3">
-								<p class="text-center text-dark" style="font-family:calibri;">Cryparis</p>
-							</div>
-							<div class="row text-dark mt-3">
-								<p style="font-family:calibri; font-size:20px; text-shadow:none;">Colección basada en monumentos de París. Esta colección cuenta con 3 modelos de NFTs diferentes. Son los únicos NFTs de Cryptoments lanzados en Blanco y Negro, para así otorgarles una mayor sensación de antigüedad.
-									<br>
-									"BitEiffel" NFT basado en la Torre Eiffel sólo habrá disponibles un total de 5 unidades.
-									<br>
-									"Arco del Bitcoin" NFT basado en el Arco del Triunfo, sólo habrá disponibles un total de 5 unidades
-									<br>
-									"Catedral Cryptoments" NFT basado en la catedral de Notre Dame, sólo habrá disponibles un total de 5 unidades. "</p>
-								<p style="font-family:calibri;" class="mt-3">
-									16 de Junio de 2022</p>
-							<section style="font-size:20px;">
-								<p style="border:1px solid; display:inline-block;background-color:white;">
-									<span id="days"></span> días / <span id="hours"></span> horas / <span id="minutes"></span> minutos / <span id="seconds"></span> segundos
-								</p>
-							</section> 
-						</div>
-						</a> 
-					</div>
-						<div class="row mt-2" id="cryparis">
-
-							<div class="col-md-4">
+						<div class="row mt-2" id="crymadrid">
+							<div id="info1" style="height:60%; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">Prueba1</div>
+							<div class="col-md-4" id="crymadrid1">
 								<div class="card mb-4 box-shadow">
 									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftBiteiffel.jpg', 'nftBiteiffel')}}" alt="NFT #02">
 									<div
@@ -158,7 +121,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4" id="crymadrid2">
 								<div class="card mb-4 box-shadow">
 									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftArcoDelBitcoinByN.jpg', 'nftBiteiffel')}}" alt="NFT #02">
 									<div
@@ -174,7 +137,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 ">
+							<div class="col-md-4 " id="crymadrid3">
 								<div class="card mb-4 box-shadow">
 									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('catedralCryptoments.jpg', 'nftBiteiffel')}}" alt="NFT #03">
 									<div
@@ -194,8 +157,9 @@
 					</div>
 				</div>
 			</section>
-
+		</div>
 		{% elseif nombre=="cryroma"%}
+		<div class="container">
 			<section class="jumbotron text-center  bg-light">
 				<div class="panel-heading tit1" id="tit1">
 					<p id="">
@@ -203,8 +167,8 @@
 						<b>Cryroma</b>
 						by Cryptoments &copy;</p>
 						<div class="row mt-2">
+						<div id="info1" style="height:60%; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">Prueba1</div>
 							<div class="col-md-4" id="cryroma1">
-								<div id="info1" style="height:374px; position: absolute;z-index:3;opacity:0;width:100%;text-align:center;background-color:gray;">Prueba1</div>
 								<div id="cryroma1foto" class="card mb-4 box-shadow">
 									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftBiteiffel.jpg', 'nftBiteiffel')}}" alt="NFT #02">
 									<div class="card-body">
@@ -234,7 +198,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 ">
+							<div class="col-md-4 " id="cryroma3">
 								<div class="card mb-4 box-shadow">
 									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('catedralCryptoments.jpg', 'nftBiteiffel')}}" alt="NFT #03">
 									<div
@@ -254,29 +218,122 @@
 					</div>
 				</div>
 			</section>
+		</div>
 		{% endif %}
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
 
 		
-			$(document).ready(function () {
-        $('#cryroma1foto').hover(function () {
+	$(document).ready(function () {
+			{# Codigo
+		 coleccion 
+		cryroma #}
+        $('#cryroma1').hover(function () {
           $('#cryroma1').css({"opacity": "1"});
           $('#info1').css({"opacity": "0.95"});
-		  $('#info1').text("Prueba 111");
+		  $('#info1').css({"display":"inline"});
+		  $('#info1').text("NFT CryptoEiffel coleccion Cryroma #01 by Cryptoments.");
         }, function () {
           $('#cryroma1').css({"opacity": "1"});
           $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
         });
 
 		 $('#cryroma2').hover(function () {
           $('#cryroma2').css({"opacity": "1"});
           $('#info1').css({"opacity": "0.95"});
-		  $('#info1').text("Prueba 222");
+		  $('#info1').css({"display":"inline"});
+		  $('#info1').text("NFT Arco del Bitcoin coleccion Cryroma #02 by Cryptoments.");
         }, function () {
           $('#cryroma2').css({"opacity": "1"});
           $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
+        });
+
+		 $('#cryroma3').hover(function () {
+          $('#cryroma3').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0.95"});
+		  $('#info1').css({"display":"inline"});
+		  $('#info1').text("NFT Catedral Cryptoments coleccion Cryroma #03 by Cryptoments.");
+        }, function () {
+          $('#cryroma3').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
+        });
+
+		{# Codigo
+		 coleccion 
+		crymadrid #}
+
+		 $('#crymadrid1').hover(function () {
+          $('#crymadrid1').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0.95"});
+		  $('#info1').css({"display":"inline"});
+		  $('#info1').text("NFT BitEiffel coleccion Cryroma #01 by Cryptoments.");
+        }, function () {
+          $('#crymadrid1').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
+        });
+
+		 $('#crymadrid2').hover(function () {
+          $('#crymadrid2').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0.95"});
+		  $('#info1').css({"display":"inline"});
+		  $('#info1').text("NFT Arco del Bitcoin coleccion Cryroma #02 by Cryptoments.");
+        }, function () {
+          $('#crymadrid2').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
+        });
+
+		 $('#crymadrid3').hover(function () {
+          $('#crymadrid3').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0.95"});
+		  $('#info1').css({"display":"inline"});
+		  $('#info1').text("NFT Catedral Cryptoments coleccion Cryroma #03 by Cryptoments.");
+        }, function () {
+          $('#crymadrid3').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
+        });
+
+			{# Codigo
+		 coleccion 
+		cryparis #}
+
+		 $('#cryparis1').hover(function () {
+          $('#cryparis1').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0.95"});
+		  $('#info1').css({"display":"inline"});
+		  $('#info1').text("NFT BitEiffel coleccion CryparisByN #01 by Cryptoments.");
+        }, function () {
+          $('#cryparis1').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
+        });
+
+		 $('#cryparis2').hover(function () {
+          $('#cryparis2').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0.95"});
+		  $('#info1').css({"display":"inline"});
+		  $('#info1').text("NFT Arco del Bitcoin coleccion CryparisByN #02 by Cryptoments.");
+        }, function () {
+          $('#cryparis2').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
+        });
+
+		 $('#cryparis3').hover(function () {
+          $('#cryparis3').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0.95"});
+		  $('#info1').css({"display":"inline"});
+		  $('#info1').text("NFT Catedral Cryptoments coleccion CryparisByN #03 by Cryptoments.");
+        }, function () {
+          $('#cryparis3').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
         });
 
       });
