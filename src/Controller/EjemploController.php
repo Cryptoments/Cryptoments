@@ -14,6 +14,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class EjemploController extends AbstractController
 {
+
+    //CONTROLADOR DEL INDEX
     /**
      * @Route("/index", name="index")
      */
@@ -22,7 +24,8 @@ class EjemploController extends AbstractController
         return $this->render('index.html');
     }
 
-
+    
+    //CONTROLADOR QUE REGISTRA UN USUARIO
     /**
      * @Route("/crearUsuario", name="crearUsuario")
      */
@@ -32,16 +35,16 @@ class EjemploController extends AbstractController
         /* insertar en bd */
         $cli = new Clientes();
         $cli->setNombre($_POST['_username']);
-        $cli->setEmail("prueba@asda.com");
+        $cli->setEmail($_POST['_email']);
         $clave = $_POST['_password'];
-		$cli->setPass($_POST['_password']);
+		$cli->setPass($clave);
         $em = $this->getDoctrine()->getManager();
         $em->persist($cli);
         $em->flush(); 
-        return $this->render('login2.html.twig');
+        return $this->render('login.html.twig');
     }
     
-
+    //CONTROLADOR QUE DEVUELVE EL LOGIN
     /**
 	 * @Route("/login", name="acceso_login")
 	 */
@@ -50,8 +53,7 @@ class EjemploController extends AbstractController
 		return $this->render('login.html.twig');
 	}
 
-    //NOS LLEVA A LA PLANTILLA DE SIGN UP
-
+    //CONTROLADOR QUE DEVUELVE EL REGISTRO
 	/**
 	 * @Route("/registration", name="acceso_registration")
 	 */
@@ -60,6 +62,7 @@ class EjemploController extends AbstractController
 		return $this->render('registration.html.twig');
 	}
 
+    //CONTROLADOR QUE MUESTRA LAS COLECCIONES
     /**
      * @Route("/colecciones", name="colecciones")
      */

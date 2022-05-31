@@ -15719,35 +15719,41 @@ h2 {
 <title>Registration</title>
 <script nonce="48d49da8-bdc6-4014-9c1b-6ca9e10ebeec">(function(w,d){!function(a,e,t,r){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zaraz={deferred:[]},a.zaraz.q=[],a.zaraz._f=function(e){return function(){var t=Array.prototype.slice.call(arguments);a.zaraz.q.push({m:e,a:t})}};for(const e of["track","set","ecommerce","debug"])a.zaraz[e]=a.zaraz._f(e);a.addEventListener("DOMContentLoaded",(()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r),n=e.getElementsByTagName("title")[0];for(n&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.x=Math.random(),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),a.zarazData.q=[];a.zaraz.q.length;){const e=a.zaraz.q.shift();a.zarazData.q.push(e)}z.defer=!0;for(const e of[localStorage,sessionStorage])Object.keys(e).filter((a=>a.startsWith("_zaraz_"))).forEach((t=>a.zarazData["z_"+t.slice(7)]=JSON.parse(e.getItem(t))));z.referrerPolicy="origin",z.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)}))}(w,d,0,"script");})(window,document);</script></head>
 <body>
-<div class="d-lg-flex half">
-<div class="bg order-1 order-md-2" style="background-image:url(https://external-preview.redd.it/i2XdVglmPH5xMhTOb2Kz_8R5nR2s4tV8n6FpL8GRFFE.png?format=pjpg&auto=webp&s=27a8b346169c30ef79aec732ebbb7c007d996959)"></div>
-<div class="contents order-2 order-md-1">
-<div class="container">
-<div class="row align-items-center justify-content-center">
-<div class="col-md-7">
-<h3>Sign Up for <strong>Cryptoments</strong></h3>
-<p class="mb-4">Welcome to the Sign Up of Cryptoments Web</p>
-<form action="{{ path('crearUsuario') }}" method="post">
-<div class="form-group first">
-<label for="username"  >Username</label>
-<input type="text" name="_username" id="_username" class="form-control" placeholder="Email">
-</div>
-<div class="form-group last mb-3">
-<label for="password" >Password</label>
-<input type="password" class="form-control" placeholder="Password" name="_password" id="_password">
-</div>
-
-<input type="submit" value="Sign Up" class="btn btn-block btn-primary">
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/popper.min.js+bootstrap.min.js+main.js.pagespeed.jc.knpfk1Gqze.js"></script><script>eval(mod_pagespeed_kuJAr8zZic);</script>
-<script>eval(mod_pagespeed_Hwy1FMvIvF);</script>
-<script>eval(mod_pagespeed_R4pSQ1BWYQ);</script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"70ceb9974953385d","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
+  <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image:url(https://external-preview.redd.it/i2XdVglmPH5xMhTOb2Kz_8R5nR2s4tV8n6FpL8GRFFE.png?format=pjpg&auto=webp&s=27a8b346169c30ef79aec732ebbb7c007d996959)"></div>
+    <div class="contents order-2 order-md-1">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+          <h3>Sign Up for <strong>Cryptoments</strong></h3>
+            <p class="mb-4">Welcome to the Sign Up of Cryptoments Web</p>
+              <form action="{{ path('crearUsuario') }}" method="post">
+              {#INTRODUCCION DEL USERNAME#}
+                <div class="form-group first">
+                  <label for="username"  >Username</label>
+                  <input type="text" name="_username" id="_username" class="form-control" placeholder="Username">
+                </div>
+              {#INTRODUCCION DEL EMAIL#}
+                <div class="form-group last mb-3">
+                  <label for="email" >Email</label>
+                  <input type="email" class="form-control" placeholder="Email" name="_email" id="_email">
+                </div>
+              {#INTRODUCCION DE LA PASSWORD#}
+                <div class="form-group last mb-3">
+                  <label for="password" >Password</label>
+                  <input type="password" class="form-control" placeholder="Password" name="_password" id="_password">
+                </div>
+                <input type="submit" value="Sign Up" class="btn btn-block btn-primary">
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/popper.min.js+bootstrap.min.js+main.js.pagespeed.jc.knpfk1Gqze.js"></script><script>eval(mod_pagespeed_kuJAr8zZic);</script>
+  <script>eval(mod_pagespeed_Hwy1FMvIvF);</script>
+  <script>eval(mod_pagespeed_R4pSQ1BWYQ);</script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"70ceb9974953385d","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
 </body>
 </html>
