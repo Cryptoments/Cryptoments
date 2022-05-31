@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controller;
-
+use Symfony\Component\HttpFoundation\Session\Session;
+$session = new Session();
+        $session->start();
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,6 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class EjemploController extends AbstractController
 {
+    
 
     //CONTROLADOR DEL INDEX
     /**
@@ -21,7 +24,7 @@ class EjemploController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('index.html');
+        return $this->render('index.html.twig');
     }
 
     
@@ -52,22 +55,34 @@ class EjemploController extends AbstractController
         return $this->render('login.html.twig');
 	}
 
+    //CONTROLADOR QUE DEVUELVE LA PRINCIPAL
+    /**
+	 * @Route("/principal", name="acceso_principal")
+	 */
+	public function principal()
+	{
+        return $this->render('principal.html.twig');
+	}
+
     //CONTROLADOR QUE PROCESA EL LOGIN
     /**
 	 * @Route("/procesadologin", name="procesado_login")
 	 */
 	public function procesadoLogin()
 	{
-        if($_POST['_username']!=""){
+        if( isset($_POST['_username'])){
             $username=$_POST['_username'];
             $password=$_POST['_password'];
             $usuarios = $this->getDoctrine()->getRepository(Clientes::class)->findAll();
             foreach($usuarios as $usuario){
             if($usuario->getNombre()==$username){
                 if($usuario->getPass()==$password){
-                    return $this->render('principal.html.twig');
-                }
+                    $session->set('nombreUser', $username);
+                    return $this->render('index.html.twig', array(
+                        'nombreUser'=>$session->get('nombreUser')));
+                }   
             }
+            
 	    }
         }else{
             return $this->render('login.html.twig');
