@@ -31,7 +31,6 @@ class EjemploController extends AbstractController
      */
     public function crearUsuario(UserPasswordEncoderInterface $encoder): Response
     {
-        
         /* insertar en bd */
         $cli = new Clientes();
         $cli->setNombre($_POST['_username']);
@@ -50,7 +49,30 @@ class EjemploController extends AbstractController
 	 */
 	public function login()
 	{
-		return $this->render('login.html.twig');
+        return $this->render('login.html.twig');
+	}
+
+    //CONTROLADOR QUE PROCESA EL LOGIN
+    /**
+	 * @Route("/procesadologin", name="procesado_login")
+	 */
+	public function procesadoLogin()
+	{
+        if($_POST['_username']!=""){
+            $username=$_POST['_username'];
+            $password=$_POST['_password'];
+            $usuarios = $this->getDoctrine()->getRepository(Clientes::class)->findAll();
+            foreach($usuarios as $usuario){
+            if($usuario->getNombre()==$username){
+                if($usuario->getPass()==$password){
+                    return $this->render('principal.html.twig');
+                }
+            }
+	    }
+        }else{
+            return $this->render('login.html.twig');
+        }
+		
 	}
 
     //CONTROLADOR QUE DEVUELVE EL REGISTRO
