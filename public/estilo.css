@@ -1,0 +1,33 @@
+img{
+    width: 300px;
+    border: 8px solid black;
+}
+.container{
+    max-width: 900px;
+}
+.container-2{
+    margin: 0 auto;
+    max-width: 500px;
+}
+#img-pri{
+    width: 400px;
+}
+.texto-blanco{
+    color:white;
+}
+#mis-datos{
+    background-color: antiquewhite;
+}
+.circulo{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: black;
+}
+.texto-blanco{
+    color:white;
+}
+#tituloHeader:hover{
+    color:green;
+    cursor:pointer;
+}
