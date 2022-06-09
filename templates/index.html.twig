@@ -12,71 +12,78 @@
     
 <div class="navbar navbar-dark bg-dark">
     <div class="container">
-        <h1 class="navbar-brand" onclick='location.href="/index"'>CRYPTOMENTS NFT</h1>
+        <h1 class="navbar-brand" onclick='location.href="/index"' id="tituloHeader">CRYPTOMENTS NFT</h1>
         <div>
             <button class="btn btn-danger"onclick='location.href="/login"' type="button">Login</button>
             <button class="btn btn-info" onclick='location.href="/registration"' type="button">Registro</button>
             <button class="btn btn-warning" onclick='location.href="/principal"' type="button">Principal</button>
             <button class="btn btn-success" onclick='location.href="/colecciones"' type="button">Colecciones</button>
+            <button class="btn btn-danger" onclick='location.href="/logout"' type="button">Logout</button>
+            {% if usuario == "administrador"  %}
+                <button class="btn btn-warning" onclick='location.href="/paneladmin"' type="button">Admin</button>
+            {% endif %} 
         </div>
         
     </div>
 </div>
 <main class="container">
     <br>
+    {% if error is defined %}
+        <p class="mb-4 bg-danger" style="color:white;text-align:center;">{{ error }}</p>
+    {% endif %} 
     <div class="row">
         <div class="col-md-6 text-center">
-            <img src="img/ArcoDelTriunfoFE.png" alt="cuadro2" id="img-pri">
+            <img src="img/arcodeltriunfo.jpeg" onclick='location.href="https://objkt.com/asset/KT1V2ZDnck3REtc52Bp85mti6kxgdVeCjeMq/0"' alt="cuadro2" id="img-pri">
         </div>
         <div class="col-md-6 text-center my-auto">
             <h1 class="font-weight-bold">Cryptoments™ Collection</h1>
             <p>El primer Drop de la colección de Cryptoments desarrollado en la blockchain de Tezos.</p>
-            <button class="btn btn-warning">Únete a la whitelist</button>
+            <button class="btn btn-warning" onclick='location.href="/colecciones"'>Únete a la whitelist</button>
         </div>
     </div>
     <br>
     <div class="row flex-row-reverse">
         <div class="col-md-6 text-center">
-            <img src="img/EstatuaLibertadFE.png" alt="cuadro3">
+            <img src="img/EstatuaLibertadFE.png" onclick='location.href="https://objkt.com/asset/KT1V2ZDnck3REtc52Bp85mti6kxgdVeCjeMq/4"' alt="cuadro3">
         </div>
         <div class="col-md-6 text-center my-auto">
             <h1 class="font-weight-bold">Arte Digital</h1>
             <p>Cryptoments es solo arte digital. Gracias a la tecnología Blockchain certificamos la entidad propia de cada obra.</p>
-            <button class="btn btn-warning">Accede al mercado</button>
+            <button class="btn btn-warning" onclick='location.href="https://objkt.com"'>Accede al mercado</button>
         </div>
     </div>
 
     <br>
     <div class="row">
         <div class="col-md-6 text-center">
-            <img src="img/ColiseoRomanoFE.png" alt="cuadro1">
+            <img src="img/torrefuego.png" onclick='location.href="https://objkt.com/asset/KT1V2ZDnck3REtc52Bp85mti6kxgdVeCjeMq/2"' alt="cuadro1">
         </div>
         <div class="col-md-6 text-center my-auto">
             <h1 class="font-weight-bold">Eco-Friendly</h1>
             <p>Gracias al algoritmo LPoS Tezos es una cadena responsable con el medio ambiente por la que apuestan grandes compañias como Ubisoft o Red Bull.</p>
-            <button class="btn btn-warning">Compara con el buscador</button>
+            <button class="btn btn-warning"  onclick='location.href="https://tezos.com/"'>Tezos</button>
         </div>
     </div>
             <br>
     <div class="row flex-row-reverse">
         <div class="col-md-6 text-center">
-            <img src="img/BurjKhalifaFE.png" alt="cuadro5">
+            <img src="img/notredame.jpeg" onclick='location.href="https://objkt.com/asset/KT1V2ZDnck3REtc52Bp85mti6kxgdVeCjeMq/3"' alt="cuadro5">
         </div>
         <div class="col-md-6 text-center my-auto">
             <h1 class="font-weight-bold">Virtual Museum</h1>
             <p>Visita en nuestro museo virtual todas las colecciones disponibles hasta la fecha.</p>
-            <button class="btn btn-warning">Visita el museo virtual</button>
+            <button class="btn btn-warning" onclick='location.href="https://vps-19ac6b01.vps.ovh.net/"'>Visita el museo virtual</button>
         </div>
     </div>
         <br>
     <div class="row">
         <div class="col-md-6 text-center">
-            <img src="img/Partenon2.png" alt="cuadro4">
+            <img src="img/ArcoDelTriunfoFE.png" onclick='location.href="https://objkt.com/asset/KT1V2ZDnck3REtc52Bp85mti6kxgdVeCjeMq/1"' alt="cuadro4">
         </div>
         <div class="col-md-6 text-center my-auto">
             <h1 class="font-weight-bold">Coming Soon...</h1>
             <p>Pronto desvelaremos nuevas noticias...únete a la whitelist para estar al tanto.</p>
-            <button class="btn btn-dark">F.A.Q</button>
+            <button class="btn btn-dark" onclick='location.href="/colecciones"'>Suscríbete</button>
         </div>
     </div>
 </main>
@@ -124,13 +131,13 @@
             <div class="col-md-6 font-weight-light">
                 <div>Contacto</div>
                 <div>Redes Sociales</div>
-                <div>F.A.Q</div>
+                <div  onclick='location.href="/colecciones"'>Suscríbete</div>
                 <div>SmartContract</div>
             </div>
             <div class="col-md-6  font-weight-light">
                 <div>Derechos legales Ⓒ</div>
-                <div>Tezos Blockchain</div>
-                <div>Objtk</div>
+                <div onclick='location.href="https://tezos.com/"'>Tezos Blockchain</div>
+                <div onclick='location.href="https://objkt.com"'>Objtk</div>
                 <div>Wallet</div>
             </div>
         </div>

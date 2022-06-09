@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Colecciones Cryptoments</title>
-        		<style>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="Cryptoments">
+		<title>Cryptoments</title>
+		<style>
 			.moneda {
 				font-family: "Arial";
 				font-size: 15px;
@@ -18,47 +21,67 @@
 				text-align: center;
 				text-shadow: 0 1px 1px #fff;
 			}
+			.texto-blanco{
+				color:white;
+			}
+				#tituloHeader:hover{
+				color:green;
+				cursor:pointer;
+			}
 		</style>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    </head>
+
+
+		<!-- Bootstrap core CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    	
+
+	<!-- Custom styles for this template -->
+
+	</head>
     <body>
+		<header>
+			<div class="navbar navbar-dark bg-dark">
+				<div class="container">
+					<h1 class="navbar-brand" onclick='location.href="/index"' id="tituloHeader">CRYPTOMENTS NFT</h1>
+					  <div>
+						<button class="btn btn-danger"onclick='location.href="/login"' type="button">Login</button>
+						<button class="btn btn-info" onclick='location.href="/registration"' type="button">Registro</button>
+						<button class="btn btn-warning" onclick='location.href="/principal"' type="button">Principal</button>
+						<button class="btn btn-success" onclick='location.href="/colecciones"' type="button">Colecciones</button>
+						<button class="btn btn-danger" onclick='location.href="/logout"' type="button">Logout</button>
+						{% if usuario == "administrador"  %}
+							<button class="btn btn-warning" onclick='location.href="/paneladmin"' type="button">Admin</button>
+						{% endif %} 
+        			</div>	
+				</div>
+			</div>
+		</header>
         {% if nombre=="cryparisByN" %}
+		<div class="container">
 			<section class="jumbotron text-center  bg-light">
 				<div class="panel-heading tit1" id="tit1">
 					<p id="">
 						Colección
 						<b>Cryparis</b>
 						by Cryptoments &copy;</p>
-
-					<div id="cryparisContainer" class="container" style="position: relative;">
-						{# Div que se muestra al pasar el ratón por encima de alguna colección #}
-						<a style="text-decoration:none" href="/coleccion/cryparisByN"><div id="info" class="container bg-secondary" style="opacity:0;height:374px; position: absolute;z-index:3;">
-							<div class="row mt-3 mb-3">
-								<p class="text-center text-dark" style="font-family:calibri;">Cryparis</p>
-							</div>
-							<div class="row text-dark mt-3">
-								<p style="font-family:calibri; font-size:20px; text-shadow:none;">Colección basada en monumentos de París. Esta colección cuenta con 3 modelos de NFTs diferentes. Son los únicos NFTs de Cryptoments lanzados en Blanco y Negro, para así otorgarles una mayor sensación de antigüedad.
-									<br>
-									"BitEiffel" NFT basado en la Torre Eiffel sólo habrá disponibles un total de 5 unidades.
-									<br>
-									"Arco del Bitcoin" NFT basado en el Arco del Triunfo, sólo habrá disponibles un total de 5 unidades
-									<br>
-									"Catedral Cryptoments" NFT basado en la catedral de Notre Dame, sólo habrá disponibles un total de 5 unidades. "</p>
-								<p style="font-family:calibri;" class="mt-3">
-									16 de Junio de 2022</p>
-							<section style="font-size:20px;">
-								<p style="border:1px solid; display:inline-block;background-color:white;">
-									<span id="days"></span> días / <span id="hours"></span> horas / <span id="minutes"></span> minutos / <span id="seconds"></span> segundos
-								</p>
-							</section> 
-						</div>
-						</a> 
-					</div>
-						<div class="row mt-2" id="cryparis">
-
-							<div class="col-md-4">
+						<div class="row mt-2" >
+							<div class="col-md-4" id="cryparis1">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftBiteiffel.jpg', 'nftBiteiffel')}}" alt="NFT #02">
+								<div id="info1" class="container" style="height:90%; margin-top:4%;margin-left:20px; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">
+									<div class="row" ><h2>
+										NFT CryptoEiffel coleccion Cryroma #01 by Cryptoments.
+										</h2>
+									</div>
+									<div class="row mt-5">
+										<div class="col-md-6 mt-1">
+										<button id="museo1" class="btn btn-primary" >Ir al museo virtual</button>
+										</div>
+										<div class="col-md-6 mt-1">
+										<button id="tienda1" class="btn btn-primary">Ir a la tienda NFT</button>
+										</div>
+									</div>
+								</div>
+									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="img/nftBiteiffel.jpg" alt="NFT #02">
 									<div
 										class="card-body">
 										{# <p class="card-text">BitEiffel Tower <br>Este es el primer NFT de la colección Cryparis. #01 Colection Cryparis by Cryptoments.</p> #}
@@ -72,9 +95,23 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4" id="cryparis2">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftArcoDelBitcoinByN.jpg', 'nftBiteiffel')}}" alt="NFT #02">
+								<div id="info2" class="container" style="height:90%;margin-top:4%; margin-left:20px; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">
+									<div class="row" ><h2>
+										NFT CryptoEiffel coleccion Cryroma #01 by Cryptoments.
+										</h2>
+									</div>
+									<div class="row mt-5">
+										<div class="col-md-6 ">
+										<button id="museo2" class="btn btn-primary" >Ir al museo virtual</button>
+										</div>
+										<div class="col-md-6 ">
+										<button id="tienda2" class="btn btn-primary">Ir a la tienda NFT</button>
+										</div>
+									</div>
+								</div>
+									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="img/nftArcoDelBitcoinByN.jpg" alt="NFT #02">
 									<div
 										class="card-body">
 										{# <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> #}
@@ -88,9 +125,23 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 ">
+							<div class="col-md-4 " id="cryparis3">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('catedralCryptoments.jpg', 'nftBiteiffel')}}" alt="NFT #03">
+								<div id="info3" class="container" style="height:90%; margin-top:4%;margin-left:20px; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">
+								<div class="row" ><h2>
+										NFT CryptoEiffel coleccion Cryroma #01 by Cryptoments.
+										</h2>
+									</div>
+									<div class="row mt-5">
+										<div class="col-md-6 ">
+										<button id="museo3" class="btn btn-primary" >Ir al museo virtual</button>
+										</div>
+										<div class="col-md-6 ">
+										<button id="tienda3" class="btn btn-primary">Ir a la tienda NFT</button>
+										</div>
+									</div>
+								</div>
+									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="img/catedralCryptoments.jpg" alt="NFT #03">
 									<div
 										class="card-body">
 										{# <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>/ #}
@@ -108,45 +159,35 @@
 					</div>
 				</div>
 			</section>
+		</div>
 		{% elseif nombre=="crymadrid" %}
+		<div class="container">
 			<section class="jumbotron text-center  bg-light">
 				<div class="panel-heading tit1" id="tit1">
 					<p id="">
 						Colección
-						<b>Cryparis</b>
+						<b>Crymadrid</b>
 						by Cryptoments &copy;</p>
-
-					<div id="cryparisContainer" class="container" style="position: relative;">
-						{# Div que se muestra al pasar el ratón por encima de alguna colección #}
-						<a style="text-decoration:none" href="/coleccion/cryparisByN"><div id="info" class="container bg-secondary" style="opacity:0;height:374px; position: absolute;z-index:3;">
-							<div class="row mt-3 mb-3">
-								<p class="text-center text-dark" style="font-family:calibri;">Cryparis</p>
-							</div>
-							<div class="row text-dark mt-3">
-								<p style="font-family:calibri; font-size:20px; text-shadow:none;">Colección basada en monumentos de París. Esta colección cuenta con 3 modelos de NFTs diferentes. Son los únicos NFTs de Cryptoments lanzados en Blanco y Negro, para así otorgarles una mayor sensación de antigüedad.
-									<br>
-									"BitEiffel" NFT basado en la Torre Eiffel sólo habrá disponibles un total de 5 unidades.
-									<br>
-									"Arco del Bitcoin" NFT basado en el Arco del Triunfo, sólo habrá disponibles un total de 5 unidades
-									<br>
-									"Catedral Cryptoments" NFT basado en la catedral de Notre Dame, sólo habrá disponibles un total de 5 unidades. "</p>
-								<p style="font-family:calibri;" class="mt-3">
-									16 de Junio de 2022</p>
-							<section style="font-size:20px;">
-								<p style="border:1px solid; display:inline-block;background-color:white;">
-									<span id="days"></span> días / <span id="hours"></span> horas / <span id="minutes"></span> minutos / <span id="seconds"></span> segundos
-								</p>
-							</section> 
-						</div>
-						</a> 
-					</div>
-						<div class="row mt-2" id="cryparis">
-
-							<div class="col-md-4">
-								<div class="card mb-4 box-shadow">
-									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftBiteiffel.jpg', 'nftBiteiffel')}}" alt="NFT #02">
-									<div
-										class="card-body">
+						<div class="row mt-2">
+						
+							<div class="col-md-4" id="crymadrid1">
+								<div id="crymadrid1foto" class="card mb-4 box-shadow">
+								<div id="info1" class="container" style="height:90%;margin-top:4%; margin-left:20px; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">
+									<div class="row" ><h2>
+										NFT CryptoEiffel coleccion Crymadrid #01 by Cryptoments.
+										</h2>
+									</div>
+									<div class="row mt-5">
+										<div class="col-md-6 mt-1">
+										<button id="museo1" class="btn btn-primary" >Ir al museo virtual</button>
+										</div>
+										<div class="col-md-6 mt-1">
+										<button id="tienda1" class="btn btn-primary">Ir a la tienda NFT</button>
+										</div>
+									</div>
+								</div>
+									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="img/nftBiteiffel.jpg" alt="NFT #02">
+									<div class="card-body">
 										{# <p class="card-text">BitEiffel Tower <br>Este es el primer NFT de la colección Cryparis. #01 Colection Cryparis by Cryptoments.</p> #}
 										<div class="d-flex justify-content-between align-items-center" style="height:50px;">
 											<div class="btn-group">
@@ -158,11 +199,24 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4">
-								<div class="card mb-4 box-shadow">
-									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftArcoDelBitcoinByN.jpg', 'nftBiteiffel')}}" alt="NFT #02">
-									<div
-										class="card-body">
+							<div class="col-md-4" id="crymadrid2">
+								<div class="card mb-4 box-shadow" id="cryroma1foto">
+								<div id="info2" class="container" style="height:90%;margin-top:4%; margin-left:20px; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">
+									<div class="row" ><h2>
+										NFT CryptoEiffel coleccion Crymadrid #01 by Cryptoments.
+										</h2>
+									</div>
+									<div class="row mt-5">
+										<div class="col-md-6 mt-1">
+										<button id="museo2" class="btn btn-primary" >Ir al museo virtual</button>
+										</div>
+										<div class="col-md-6 mt-1">
+										<button id="tienda2" class="btn btn-primary">Ir a la tienda NFT</button>
+										</div>
+									</div>
+								</div>
+									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="img/nftArcoDelBitcoinByN.jpg" alt="NFT #02">
+									<div class="card-body">
 										{# <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> #}
 										<div class="d-flex justify-content-between align-items-center" style="height:50px;">
 											<div class="btn-group">
@@ -174,9 +228,24 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 ">
+							<div class="col-md-4 " id="crymadrid3">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('catedralCryptoments.jpg', 'nftBiteiffel')}}" alt="NFT #03">
+								<div id="info3" class="container" style="height:90%; margin-top:4%; margin-left:20px; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">
+									<div class="row" ><h2>
+										NFT CryptoEiffel coleccion Crymadrid #01 by Cryptoments.
+										</h2>
+									</div>
+									<div class="row mt-5">
+										<div class="col-md-6 mt-1">
+										<button id="museo3" class="btn btn-primary" >Ir al museo virtual</button>
+										</div>
+										<div class="col-md-6 mt-1">
+										<button id="tienda3" class="btn btn-primary">Ir a la tienda NFT</button>
+										</div>
+									</div>
+								
+								</div>
+									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="img/catedralCryptoments.jpg" alt="NFT #03">
 									<div
 										class="card-body">
 										{# <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>/ #}
@@ -194,8 +263,9 @@
 					</div>
 				</div>
 			</section>
-
+		</div>
 		{% elseif nombre=="cryroma"%}
+		<div class="container">
 			<section class="jumbotron text-center  bg-light">
 				<div class="panel-heading tit1" id="tit1">
 					<p id="">
@@ -203,10 +273,24 @@
 						<b>Cryroma</b>
 						by Cryptoments &copy;</p>
 						<div class="row mt-2">
+						
 							<div class="col-md-4" id="cryroma1">
-								<div id="info1" style="height:374px; position: absolute;z-index:3;opacity:0;width:100%;text-align:center;background-color:gray;">Prueba1</div>
 								<div id="cryroma1foto" class="card mb-4 box-shadow">
-									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftBiteiffel.jpg', 'nftBiteiffel')}}" alt="NFT #02">
+								<div id="info1" class="container" style="height:90%;margin-top:4%; margin-left:20px; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">
+									<div class="row" ><h2>
+										NFT CryptoEiffel coleccion Cryroma #01 by Cryptoments.
+										</h2>
+									</div>
+									<div class="row mt-5">
+										<div class="col-md-6 mt-1">
+										<button id="museo1" class="btn btn-primary" >Ir al museo virtual</button>
+										</div>
+										<div class="col-md-6 mt-1">
+										<button id="tienda1" class="btn btn-primary">Ir a la tienda NFT</button>
+										</div>
+									</div>
+								</div>
+									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="img/nftBiteiffel.jpg" alt="NFT #02">
 									<div class="card-body">
 										{# <p class="card-text">BitEiffel Tower <br>Este es el primer NFT de la colección Cryparis. #01 Colection Cryparis by Cryptoments.</p> #}
 										<div class="d-flex justify-content-between align-items-center" style="height:50px;">
@@ -221,7 +305,21 @@
 							</div>
 							<div class="col-md-4" id="cryroma2">
 								<div class="card mb-4 box-shadow" id="cryroma1foto">
-									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('nftArcoDelBitcoinByN.jpg', 'nftBiteiffel')}}" alt="NFT #02">
+								<div id="info2" class="container" style="height:90%;margin-top:4%; margin-left:20px; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">
+									<div class="row" ><h2>
+										NFT CryptoEiffel coleccion Cryroma #01 by Cryptoments.
+										</h2>
+									</div>
+									<div class="row mt-5">
+										<div class="col-md-6 mt-1">
+										<button id="museo2" class="btn btn-primary" >Ir al museo virtual</button>
+										</div>
+										<div class="col-md-6 mt-1">
+										<button id="tienda2" class="btn btn-primary">Ir a la tienda NFT</button>
+										</div>
+									</div>
+								</div>
+									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="img/nftArcoDelBitcoinByN.jpg" alt="NFT #02">
 									<div class="card-body">
 										{# <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> #}
 										<div class="d-flex justify-content-between align-items-center" style="height:50px;">
@@ -234,9 +332,24 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 ">
+							<div class="col-md-4 " id="cryroma3">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="{{ asset('catedralCryptoments.jpg', 'nftBiteiffel')}}" alt="NFT #03">
+								<div id="info3" class="container" style="height:90%; margin-top:4%; margin-left:20px; position: absolute;z-index:3;opacity:0;width:90%;text-align:center;background-color:gray;display:none;color:white;">
+									<div class="row" ><h2>
+										NFT CryptoEiffel coleccion Cryroma #01 by Cryptoments.
+										</h2>
+									</div>
+									<div class="row mt-5">
+										<div class="col-md-6 mt-1">
+										<button id="museo3" class="btn btn-primary" >Ir al museo virtual</button>
+										</div>
+										<div class="col-md-6 mt-1">
+										<button id="tienda3" class="btn btn-primary">Ir a la tienda NFT</button>
+										</div>
+									</div>
+								
+								</div>
+									<img class="card-img-top mt-3" style='width:250px;height:250px;margin:auto;' src="img/catedralCryptoments.jpg" alt="NFT #03">
 									<div
 										class="card-body">
 										{# <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>/ #}
@@ -254,32 +367,159 @@
 					</div>
 				</div>
 			</section>
+		</div>
 		{% endif %}
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script>
 
 		
-			$(document).ready(function () {
-        $('#cryroma1foto').hover(function () {
+	$(document).ready(function () {
+			{# Codigo
+		 coleccion 
+		cryparis #}
+		$('#museo1').click(function () {
+			location.href="https://vps-19ac6b01.vps.ovh.net/";
+		});
+		$('#museo2').click(function () {
+			location.href="https://vps-19ac6b01.vps.ovh.net/";
+		});
+		$('#museo3').click(function () {
+			location.href="https://vps-19ac6b01.vps.ovh.net/";
+		});
+		$('#tienda1').click(function () {
+			location.href="https://opensea.com/";
+		});
+		$('#tienda2').click(function () {
+			location.href="https://opensea.com/";
+		});
+		$('#tienda3').click(function () {
+			location.href="https://opensea.com/";
+		});
+
+        $('#cryroma1').hover(function () {
           $('#cryroma1').css({"opacity": "1"});
           $('#info1').css({"opacity": "0.95"});
-		  $('#info1').text("Prueba 111");
+		  $('#info1').css({"display":"inline"});
         }, function () {
           $('#cryroma1').css({"opacity": "1"});
           $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
         });
 
 		 $('#cryroma2').hover(function () {
           $('#cryroma2').css({"opacity": "1"});
-          $('#info1').css({"opacity": "0.95"});
-		  $('#info1').text("Prueba 222");
+          $('#info2').css({"opacity": "0.95"});
+		  $('#info2').css({"display":"inline"});
         }, function () {
           $('#cryroma2').css({"opacity": "1"});
+          $('#info2').css({"opacity": "0"});
+		  $('#info2').css({"display":"none"});
+        });
+
+		 $('#cryroma3').hover(function () {
+          $('#cryroma3').css({"opacity": "1"});
+          $('#info3').css({"opacity": "0.95"});
+		  $('#info3').css({"display":"inline"});
+        }, function () {
+          $('#cryroma3').css({"opacity": "1"});
+          $('#info3').css({"opacity": "0"});
+		  $('#info3').css({"display":"none"});
+        });
+
+		{# Codigo
+		 coleccion 
+		crymadrid #}
+
+		 $('#crymadrid1').hover(function () {
+          $('#crymadrid1').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0.95"});
+		  $('#info1').css({"display":"inline"});
+        }, function () {
+          $('#crymadrid1').css({"opacity": "1"});
           $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
+        });
+
+		 $('#crymadrid2').hover(function () {
+          $('#crymadrid2').css({"opacity": "1"});
+          $('#info2').css({"opacity": "0.95"});
+		  $('#info2').css({"display":"inline"});
+        }, function () {
+          $('#crymadrid2').css({"opacity": "1"});
+          $('#info2').css({"opacity": "0"});
+		  $('#info2').css({"display":"none"});
+        });
+
+		 $('#crymadrid3').hover(function () {
+          $('#crymadrid3').css({"opacity": "1"});
+          $('#info3').css({"opacity": "0.95"});
+		  $('#info3').css({"display":"inline"});
+        }, function () {
+          $('#crymadrid3').css({"opacity": "1"});
+          $('#info3').css({"opacity": "0"});
+		  $('#info3').css({"display":"none"});
+        });
+
+			{# Codigo
+		 coleccion 
+		cryparis #}
+
+		 $('#cryparis1').hover(function () {
+          $('#cryparis1').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0.95"});
+		  $('#info1').css({"display":"inline"});
+		  
+        }, function () {
+          $('#cryparis1').css({"opacity": "1"});
+          $('#info1').css({"opacity": "0"});
+		  $('#info1').css({"display":"none"});
+        });
+
+		 $('#cryparis2').hover(function () {
+          $('#cryparis2').css({"opacity": "1"});
+          $('#info2').css({"opacity": "0.95"});
+		  $('#info2').css({"display":"inline"});
+        }, function () {
+          $('#cryparis2').css({"opacity": "1"});
+          $('#info2').css({"opacity": "0"});
+		  $('#info2').css({"display":"none"});
+        });
+
+		 $('#cryparis3').hover(function () {
+          $('#cryparis3').css({"opacity": "1"});
+          $('#info3').css({"opacity": "0.95"});
+		  $('#info3').css({"display":"inline"});
+        }, function () {
+          $('#cryparis3').css({"opacity": "1"});
+          $('#info3').css({"opacity": "0"});
+		  $('#info3').css({"display":"none"});
         });
 
       });
 	  </script>
+	  <style>
+	  header .container{
+    			max-width: 900px;
+			}
+		</style>
+		<footer class="bg-dark">
+			<div class="container">
+				<div class="row text-center py-3 texto-blanco">
+					<div class="col-md-6 font-weight-light">
+						<div>Contacto</div>
+						<div>Redes Sociales</div>
+						<div>F.A.Q</div>
+						<div>SmartContract</div>
+					</div>
+					<div class="col-md-6  font-weight-light">
+						<div>Derechos legales Ⓒ</div>
+						<div>Tezos Blockchain</div>
+						<div>Objtk</div>
+						<div>Wallet</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>

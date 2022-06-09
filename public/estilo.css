@@ -24,3 +24,7 @@ img{
     border-radius: 50%;
     background-color: black;
 }
+#tituloHeader:hover{
+    color:green;
+    cursor:pointer;
+}

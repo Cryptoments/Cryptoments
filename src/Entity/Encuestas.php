@@ -42,5 +42,46 @@ class Encuestas
      */
     private $no;
 
+    public function getIdencuesta(): ?int
+    {
+        return $this->idencuesta;
+    }
+
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(string $descripcion): self
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    public function getSi(): ?int
+    {
+        return $this->si;
+    }
+
+    public function setSi(?int $si): self
+    {
+        $this->si = $si;
+
+        return $this;
+    }
+
+    public function getNo(): ?int
+    {
+        return $this->no;
+    }
+
+    public function setNo(?int $no): self
+    {
+        $this->no = $no;
+
+        return $this;
+    }
+
 
 }

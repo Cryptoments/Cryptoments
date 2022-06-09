@@ -1,0 +1,10 @@
+.container{
+    max-width: 900px;
+}
+.container-2{
+    margin: 0 auto;
+    max-width: 500px;
+}
+.texto-blanco{
+    color:white;
+}
