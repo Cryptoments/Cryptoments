@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Clientes;
 use App\Entity\Colecciones;
+use App\Entity\clientes_colecciones;
 use App\Entity\ClientesColecciones;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -49,17 +50,38 @@ class EjemploController extends AbstractController
      */
     public function crearUsuario(UserPasswordEncoderInterface $encoder): Response
     {
-        
-        /* insertar en bd */
-        $cli = new Clientes();
-        $cli->setNombre($_POST['_username']);
-        $cli->setEmail($_POST['_email']);
-        $clave = $_POST['_password'];
-		$cli->setPass($_POST['_password']);
         $em = $this->getDoctrine()->getManager();
-        $em->persist($cli);
-        $em->flush(); 
-        return $this->render('login2.html.twig');
+        if($this->getDoctrine()->getRepository(Clientes::class)->findOneBy(['email'=>$_POST['_email']])){
+            return $this->render('signUp2.html.twig',array(
+                'error' => "Ya existe un usuario con ese correo electrónico."));
+        }else{
+            if($this->getDoctrine()->getRepository(Clientes::class)->findOneBy(['nombre'=>$_POST['_username']])){
+                return $this->render('signUp2.html.twig',array(
+                    'error' => "Ya existe un usuario con ese nombre."));
+            }else{
+                /* insertar en bd */
+                $cli = new Clientes();
+                $cli->setNombre($_POST['_username']);
+                $cli->setEmail($_POST['_email']);
+                $clave = $_POST['_password'];
+                $cli->setPass($_POST['_password']);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($cli);
+                $em->flush(); 
+                /*Se suscribe automáticamente a la coleccion 1 */
+                $em = $this->getDoctrine()->getManager();
+                $prueba = $em->getRepository(Clientes::class)->findOneBy(array('nombre' =>$_POST['_username']));
+                $prueba2 = $em->getRepository(Colecciones::class)->findOneBy(array('idColeccion' =>1));
+                $clientes_colecciones=new ClientesColecciones();
+                $clientes_colecciones->setIdCliente($prueba);
+                $clientes_colecciones->setIdColeccion($prueba2);
+                $em->persist($clientes_colecciones);
+                $em->flush();
+                return $this->render('login2.html.twig');
+            }
+        }
+        
+        
     }
     
     //CONTROLADOR QUE DEVUELVE EL LOGIN
@@ -211,6 +233,32 @@ class EjemploController extends AbstractController
         return $this->json([
             'data' => $usuarios,
         ]);
+	}
+
+    /**
+     * @Route("/delete/{email}", name="ctrl_procesadodelete")
+     */
+    public function procesadoDelete($email,Request $request)
+	{
+        
+        if($request->getSession()->get("username")=='administrador'){
+            //Buscamos el usuario a eliminar
+            //ENCONTRAR EL ID DEL USUARIO
+            $em = $this->getDoctrine()->getManager();
+            $usertoremove=$this->getDoctrine()->getRepository(Clientes::class)->findOneBy(['email'=>$email]);
+            $id=$usertoremove->getId();
+            //ELIMINAR EL ID DEL USUARIO SI ESTA EN CLIENTES COLECCIONES
+            $idtoremove=$this->getDoctrine()->getRepository(clientes_colecciones::class)->findOneBy(['id_cliente'=>$id]);
+            $em->remove($idtoremove);
+            $em->flush();
+            //ELIMINAR EL USUARIO DE CLIENTES
+            $em->remove($usertoremove);
+            $em->flush();
+            //Volvemos al panel
+            return $this->redirectToRoute('ctrl_admin');
+        }else{
+            return $this->redirectToRoute('logout');
+        }
 	}
 
 }
