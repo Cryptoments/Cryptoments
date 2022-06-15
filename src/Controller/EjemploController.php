@@ -63,8 +63,8 @@ class EjemploController extends AbstractController
                 $cli = new Clientes();
                 $cli->setNombre($_POST['_username']);
                 $cli->setEmail($_POST['_email']);
-                $clave = $_POST['_password'];
-                $cli->setPass($_POST['_password']);
+                $clave = hash('ripemd160',$_POST['_password'] );
+                $cli->setPass($clave);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($cli);
                 $em->flush(); 
@@ -110,7 +110,7 @@ class EjemploController extends AbstractController
         $prueba = $em->getRepository(Clientes::class)->findOneBy(array('nombre' => $_POST["_username"]));
         $session = $request->getSession();
         if($prueba!=null){
-        if($prueba->getPass()==$_POST["_password"]){
+        if($prueba->getPass()==hash('ripemd160',$_POST['_password'] )){
             $session->set("username", $_POST["_username"]);
             return $this->render('index.html.twig',array(
                 'usuario' => $_POST["_username"]));
@@ -248,8 +248,12 @@ class EjemploController extends AbstractController
             $usertoremove=$this->getDoctrine()->getRepository(Clientes::class)->findOneBy(['email'=>$email]);
             $id=$usertoremove->getId();
             //ELIMINAR EL ID DEL USUARIO SI ESTA EN CLIENTES COLECCIONES
-            $idtoremove=$this->getDoctrine()->getRepository(clientes_colecciones::class)->findOneBy(['id_cliente'=>$id]);
-            $em->remove($idtoremove);
+            $idtoremove=$this->getDoctrine()->getRepository(clientes_colecciones::class)->findAll(['id_cliente'=>$id]);
+            $iteraciones=count($idtoremove);
+            for($i=0;$i<$iteraciones;$i++){
+                $em->remove($idtoremove[$i]);
+            }
+            
             $em->flush();
             //ELIMINAR EL USUARIO DE CLIENTES
             $em->remove($usertoremove);
